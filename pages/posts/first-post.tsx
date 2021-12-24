@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
 import {NextPage} from "next";
+import variables from "../../styles/variables.module.scss";
 
 const FirstPost: NextPage = () => {
     return (
@@ -16,7 +17,7 @@ const FirstPost: NextPage = () => {
                     console.log(`script loaded correctly, window.FB has been populated`)
                 }
             />
-            <h1>First Post</h1>
+            <h1 color={variables.primaryColor}>First Post</h1>
             <h2>
                 <Link href="/">
                     <a>&larr;&nbsp;Back to home</a>
