@@ -1,8 +1,14 @@
 import {FC} from 'react';
 import styles from "./Home.module.scss";
 import Link from "next/link";
+import Date from "./Date";
 
-const Home: FC = (props) => {
+export interface IHome {
+    posts: any[];
+}
+
+const Home: FC<IHome> = (props) => {
+    const {posts} = props;
     return (
         <main className={styles.main}>
             <h1 className={styles.title}>
@@ -52,6 +58,18 @@ const Home: FC = (props) => {
                         </p>
                     </a>
                 </Link>
+                {posts.map(({ id, date, title }) => (
+                    <Link href={`/posts/${id}`} key={id}>
+                        <a className={styles.card}>
+                            <h3>{title} &rarr;</h3>
+                            <p>
+                                {id}
+                                <br />
+                                <Date dateString={date}/>
+                            </p>
+                        </a>
+                    </Link>
+                ))}
             </div>
         </main>
     );

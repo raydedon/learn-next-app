@@ -17,12 +17,12 @@ const FirstPost: NextPage = () => {
                     console.log(`script loaded correctly, window.FB has been populated`)
                 }
             />
-            <h1 color={variables.primaryColor}>First Post</h1>
-            <h2>
+            <h5>
                 <Link href="/">
-                    <a>&larr;&nbsp;Back to home</a>
+                    <a color={variables.primaryColor}>&larr;&nbsp;Back to home</a>
                 </Link>
-            </h2>
+            </h5>
+            <h1 color={variables.primaryColor}>First Post</h1>
         </>
     );
 };

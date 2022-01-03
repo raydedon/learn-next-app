@@ -1,8 +1,23 @@
 import type { NextPage } from 'next'
 import Home from "../components/Home";
+import { getSortedPostsData } from '../lib/posts'
 
-const Base: NextPage = () => {
-  return <Home/>
+export interface IBase {
+  allPostsData: any[];
+}
+
+export async function getStaticProps() {
+  console.info('inside getStaticProps');
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData
+    }
+  }
+}
+
+const Base: NextPage<IBase> = (props) => {
+  return <Home posts={props.allPostsData as any[]}/>
 }
 
 export default Base;
