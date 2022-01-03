@@ -7,7 +7,7 @@ export interface IBase {
 }
 
 export async function getStaticProps() {
-  console.info('inside getStaticProps');
+  console.info('inside Base index page. inside getStaticProps function');
   const allPostsData = getSortedPostsData();
   return {
     props: {

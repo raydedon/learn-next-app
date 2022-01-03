@@ -4,6 +4,7 @@ import { ParsedUrlQuery } from 'querystring';
 import variables from "../../styles/variables.module.scss";
 import Link from "next/link";
 import Date from "../../components/Date";
+import {GetServerSideProps} from "next/types";
 
 interface IPostProps {
     postData: any;
@@ -13,12 +14,25 @@ interface IParams extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<IParams> = async () => {
+    console.info('inside Post component. inside getStaticPaths function');
     const posts = getSortedPostsData();
     const paths = posts.map((post) => ({params: {id: post.id}}));
     return {paths, fallback: false};
 }
 
 export const getStaticProps: GetStaticProps<IPostProps, IParams> = async (context) => {
+    console.info('inside Post component. inside getStaticProps function');
+    const postData = await getPostDataById(context?.params?.id ?? '');
+    return {
+        props: {
+            postData
+        }
+    }
+}
+
+
+export const getServerSideProps: GetServerSideProps<IPostProps, IParams> = async (context) => {
+    console.info('inside Post component. inside getServerSideProps function');
     const postData = await getPostDataById(context?.params?.id ?? '');
     return {
         props: {
