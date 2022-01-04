@@ -13,14 +13,14 @@ interface IParams extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<IParams> = async () => {
-    console.info('inside Post component. inside getStaticPaths function');
+    console.info('in preview branch. inside Post component. inside getStaticPaths function');
     const posts = getSortedPostsData();
     const paths = posts.map((post) => ({params: {id: post.id}}));
     return {paths, fallback: false};
 }
 
 export const getStaticProps: GetStaticProps<IPostProps, IParams> = async (context) => {
-    console.info('inside Post component. inside getStaticProps function');
+    console.info('in preview branch. inside Post component. inside getStaticProps function');
     const postData = await getPostDataById(context?.params?.id ?? '');
     return {
         props: {
