@@ -8,7 +8,7 @@ export interface IBase {
 }
 
 export const getStaticProps: GetStaticProps<IBase> = async () => {
-  console.info('inside Base component index page. inside getStaticProps function');
+  console.info('in preview branch. inside Base component index page. inside getStaticProps function');
   const allPostsData = getSortedPostsData();
   return {
     props: {
